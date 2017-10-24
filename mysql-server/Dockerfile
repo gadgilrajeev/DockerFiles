@@ -7,7 +7,7 @@ RUN \
   apt install -y build-essential && \
   apt install -y software-properties-common && \
   apt install -y byobu curl git htop man unzip autoconf automake make libtool libssl-dev git libnuma-dev libaio-dev cmake python python3 wget libev-dev hdparm numactl libmysqlclient-dev\
- ipmitool lmbench bc libncurses5-dev bison pkg-config vim ping sysstat
+ ipmitool lmbench bc libncurses5-dev bison pkg-config vim iputils-ping sysstat
 
 RUN git clone https://github.com/mysql/mysql-server.git
 RUN cd mysql-server && cmake -DBUILD_CONFIG=mysql_release -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/tmp/boost \
