@@ -16,7 +16,8 @@ RUN git clone https://github.com/akopytov/sysbench
 RUN cd sysbench && ./autogen.sh && ./configure && make -j && make install
 RUN git clone https://github.com/gadgilrajeev/benchmarktool.git
 EXPOSE 22
-RUN apt install -y openssh-server openssh-client sudo
+EXPOSE 3306
+RUN apt install -y openssh-server openssh-client sudo net-tools
 RUN sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
 RUN /etc/init.d/ssh start
 RUN useradd -ms /bin/bash rgadgil && echo "rgadgil:rgadgil" | chpasswd && adduser rgadgil sudo
@@ -25,4 +26,6 @@ WORKDIR /home/rgadgil/
 #RUN ssh-keygen -f ~/.ssh/id_rsa
 RUN ssh-keygen -b 2048 -t rsa -f ~/.ssh/id_rsa -q -N "" &&  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 RUN echo "|1|7AEOOIjrT5g2axyit5MfXKIfRiY=|Y0NylnCNScV+QIwqb3EU/oKS7Js= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNS/lJhdnB32lr64QCRMmjYDYTxWmILVdkpIDgqhWryV8K4uH2XIGFK+5Q4gPUS1KfZexxdWyvVfxj1shrpZ9hE=" >> ~/.ssh/known_hosts
+RUN sudo mkdir /opt/benchmarks
+RUN sudo chmod -R 777 /opt
 
