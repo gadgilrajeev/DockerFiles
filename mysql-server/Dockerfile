@@ -19,7 +19,7 @@ EXPOSE 22
 EXPOSE 3306
 RUN apt install -y openssh-server openssh-client sudo net-tools
 RUN sed -i.bkp -e 's/%sudo\s\+ALL=(ALL\(:ALL\)\?)\s\+ALL/%sudo ALL=NOPASSWD:ALL/g' /etc/sudoers
-RUN /etc/init.d/ssh start
+RUN echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 RUN useradd -ms /bin/bash rgadgil && echo "rgadgil:rgadgil" | chpasswd && adduser rgadgil sudo
 USER rgadgil
 WORKDIR /home/rgadgil/
