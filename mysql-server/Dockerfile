@@ -7,3 +7,5 @@ RUN cd mysql-server && cmake -DBUILD_CONFIG=mysql_release -DDOWNLOAD_BOOST=1 -DW
 RUN git clone https://github.com/akopytov/sysbench
 RUN cd sysbench && ./autogen.sh && ./configure && make -j && sudo make install
 EXPOSE 3306
+WORKDIR ~/benchmarktool
+ENTRYPOINT ["python3","runme.py","-w","x86-ivy-cb1","-u","rgadgil","-s","127.0.0.1","sysbench-mysql"]
