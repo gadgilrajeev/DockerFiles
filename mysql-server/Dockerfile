@@ -11,6 +11,6 @@ RUN sudo mkdir /var/run/sshd
 WORKDIR /benchmarktool
 EXPOSE 22
 COPY docker-entrypoint-sysbench-mysql.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+RUN sudo chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
