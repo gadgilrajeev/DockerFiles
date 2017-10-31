@@ -10,6 +10,7 @@ EXPOSE 3306
 RUN sudo mkdir /var/run/sshd
 WORKDIR /benchmarktool
 EXPOSE 22
-#CMD ["sudo", "/usr/sbin/sshd", "-D"]  
+COPY docker-entrypoint-sysbench-mysql.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
-ENTRYPOINT ["python3","runme.py","-w","x86-ivy-cb1","-u","rgadgil","-s","127.0.0.1","sysbench-mysql"]

@@ -7,7 +7,7 @@ RUN \
   apt install -y build-essential && \
   apt install -y software-properties-common && \
   apt install -y byobu curl git htop man unzip autoconf automake make libtool libssl-dev git libnuma-dev libaio-dev cmake python python3 wget libev-dev hdparm numactl libmysqlclient-dev\
- ipmitool lmbench bc libncurses5-dev bison pkg-config vim iputils-ping sysstat ssh openssh-server openssh-client sudo net-tools
+ ipmitool lmbench bc libncurses5-dev bison pkg-config vim iputils-ping sysstat ssh openssh-server openssh-client sudo net-tools rsync psmisc
 
 RUN git clone https://github.com/gadgilrajeev/benchmarktool.git
 EXPOSE 22
