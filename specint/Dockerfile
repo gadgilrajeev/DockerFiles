@@ -1,7 +1,6 @@
 FROM benchtool-image 
 MAINTAINER Rajeev Gadgil "rajeev.gadgil@cavium.com"
 
-RUN sudo apt install ftp -y
 RUN wget ftp://socrates/shay/cpu2017-1.0.2.iso
 RUN sudo mount cpu2017-1.0.2.iso /mnt/
 RUN cd /mnt && ./install.sh -d /opt/cpu2017
