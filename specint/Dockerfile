@@ -2,15 +2,13 @@ FROM benchtool-image
 MAINTAINER Rajeev Gadgil "rajeev.gadgil@cavium.com"
 
 RUN wget ftp://socrates/shay/cpu2017-1.0.2.iso
-RUN sudo apt-get install p7zip-full p7zip-rar
-RUN 7z -ospec2017 x cpu2017-1.0.2.iso
-RUN spec2017/install.sh -d /opt/cpu2017
-#RUN sudo mount cpu2017-1.0.2.iso /mnt/
-#RUN cd /mnt && ./install.sh -d /opt/cpu2017
-#RUN sudo mkdir /var/run/sshd
+RUN sudo apt install xorriso -y 
+RUN xorriso -osirrox on -indev cpu2017-1.0.2.iso -extract / spec2017
+RUN cd spec2017 && ./install.sh -d /opt/cpu2017 -f
+RUN sudo rm cpu2017-1.0.2.iso
+RUN sudo rm -rf spec2017
 WORKDIR /benchmarktool
 EXPOSE 22
 COPY docker-entrypoint-specint.sh /docker-entrypoint.sh
 RUN sudo chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
-
