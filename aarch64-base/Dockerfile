@@ -7,3 +7,5 @@ RUN apt install -y --no-install-recommends wget git libgnutls-dev libev-dev libe
 RUN wget ftp://socrates/shay/gcc7-t99.tar.gz
 RUN tar -zxvf gcc7-t99.tar.gz -C /opt
 RUN rm -rf gcc7-t99.tar.gz
+RUN git clone git://cagit1.caveonetworks.com/t99/soctools.git
+RUN cd soctools/socmon && make
