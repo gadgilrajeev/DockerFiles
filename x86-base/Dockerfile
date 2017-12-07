@@ -1,5 +1,5 @@
-FROM ubuntu
-MAINTAINER Shay Gal-On <sgalon@cavium.com>
+FROM ubuntu:17.10
+MAINTAINER Rajeev Gadgil <rajeev.gadgil@cavium.com>
 RUN apt update
 RUN apt install -y --no-install-recommends build-essential 
 RUN apt install -y --no-install-recommends libssl-dev libpcre3-dev 
