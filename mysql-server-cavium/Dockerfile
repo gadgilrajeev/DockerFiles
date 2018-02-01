@@ -2,8 +2,8 @@ FROM benchtool-image
 MAINTAINER Rajeev Gadgil "rajeev.gadgil@cavium.com"
 
 RUN git clone https://github.com/akopytov/cavium-mysql 
-RUN cd mysql-server && cmake -DBUILD_CONFIG=mysql_release -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/tmp/boost \
-      -DINSTALL_LAYOUT=STANDALONE -DCMAKE_INSTALL_PREFIX=/usr/local/mysql && make -j
+RUN cd cavium-mysql && cmake -DBUILD_CONFIG=mysql_release -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/tmp/boost \
+      -DINSTALL_LAYOUT=STANDALONE -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DWITH_NUMA=ON && make -j
 RUN git clone https://github.com/akopytov/sysbench
 RUN cd sysbench && ./autogen.sh && ./configure && make -j && sudo make install
 EXPOSE 3306
