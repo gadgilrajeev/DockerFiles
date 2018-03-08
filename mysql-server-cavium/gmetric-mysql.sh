@@ -69,7 +69,7 @@ function record_value_rate
 }
 
 # Read MySQL statistics into a temporary file
-sudo /mnt/data/mysql-server-cavium/opt/cavium/mysql/bin/mysql --defaults-file=/mnt/data/mysqld.cnf -S /opt/benchmarks/mysqld1.sock  --user=$MYSQL_USER --password=$MYSQL_PASSWORD --execute "SHOW GLOBAL STATUS" > "$NEW_DATA_FILE"
+sudo /home/rgadgil/cavium-mysql/client/mysql --defaults-file=/opt/benchmarks/mysqld.cnf -S /opt/benchmarks/mysqld1.sock  --user=$MYSQL_USER --password=$MYSQL_PASSWORD --execute "SHOW GLOBAL STATUS" > "$NEW_DATA_FILE"
 
 # Submit metrics
 record_value_rate "Connections" "MYSQL_CONNECTIONS" "float" "Connections/sec"
