@@ -11,6 +11,7 @@ RUN sudo mkdir /var/run/sshd
 RUN sudo apt install -y ganglia-monitor cron
 RUN sudo sed -i "s/8649/8665/g" /etc/ganglia/gmond.conf
 RUN sudo sed -i "s/name \= \"unspecified\"/name \= \"Docker Containers\"/g" /etc/ganglia/gmond.conf
+RUN sudo sed -i "s/send_metadata_interval \= 0/send_metadata_interval \= 30/g" /etc/ganglia/gmond.conf
 #RUN sudo /etc/init.d/ganglia-monitor start
 WORKDIR /benchmarktool
 EXPOSE 22
