@@ -10,5 +10,6 @@ RUN sudo rm -rf spec2017
 WORKDIR /benchmarktool
 EXPOSE 22
 COPY docker-entrypoint-specint.sh /docker-entrypoint.sh
+COPY append.sh /benchmarktool/
 RUN sudo chmod +x /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
