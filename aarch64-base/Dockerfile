@@ -1,4 +1,4 @@
-FROM arm64v8/ubuntu:17.10  
+FROM ubuntu:17.10  
 MAINTAINER Rajeev Gadgil <rajeev.gadgil@cavium.com>
 RUN apt update
 RUN apt install -y --no-install-recommends build-essential 
